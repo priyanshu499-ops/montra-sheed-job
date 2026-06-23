@@ -13,11 +13,6 @@ pipelineJob('CI/spring-boot-realworld') {
         numToKeep(10)
     }
 
-    // --- SCM Polling trigger (every 5 min)
-    triggers {
-        scm('H/5 * * * *')
-    }
-
     // --- Pipeline definition
     definition {
         cpsScm {
