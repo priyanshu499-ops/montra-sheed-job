@@ -16,13 +16,12 @@ folder('CD') {
 }
 
 // --- Auto-load all CI groovy files
-def ciFolder = new File(SEED_JOB_WORKSPACE + '/jenkins_seedjob/CI')
-ciFolder.eachFileMatch(~/.*\.groovy/) { file ->
+def workspace = WORKSPACE
+new File(workspace + '/jenkins_seedjob/CI').eachFileMatch(~/.*\.groovy/) { file ->
     evaluate(file)
 }
 
 // --- Auto-load all CD groovy files
-def cdFolder = new File(SEED_JOB_WORKSPACE + '/jenkins_seedjob/CD')
-cdFolder.eachFileMatch(~/.*\.groovy/) { file ->
+new File(workspace + '/jenkins_seedjob/CD').eachFileMatch(~/.*\.groovy/) { file ->
     evaluate(file)
 }
