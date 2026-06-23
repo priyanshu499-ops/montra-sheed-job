@@ -1,7 +1,11 @@
-pipelineJob('CI/spring-boot-realworld3') {
-    displayName('spring-boot-realworld3 - CI')
-    description('CI pipeline for spring-boot-realworld3')
+pipelineJob('CD/spring-boot-realworld3') {
+    displayName('spring-boot-realworld3 - CD')
+    description('CD pipeline for spring-boot-realworld3')
     logRotator { numToKeep(10) }
+    parameters {
+        stringParam('IMAGE_TAG', 'latest', 'Docker image tag to deploy')
+        choiceParam('ENVIRONMENT', ['staging', 'production'], 'Target deployment environment')
+    }
     definition {
         cpsScm {
             scm {
@@ -13,7 +17,7 @@ pipelineJob('CI/spring-boot-realworld3') {
                     branch('master')
                 }
             }
-            scriptPath('Jenkinsfile')
+            scriptPath('Jenkinsfile.cd')
             lightweight(true)
         }
     }
