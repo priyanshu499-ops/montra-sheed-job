@@ -1,7 +1,7 @@
 def ciJobs = [
     'spring-boot-realworld': [
         url        : 'https://github.com/priyanshu499-ops/spring-boot-realworld-example-app.git',
-        credentials: 'YOUR-CRED-ID',
+        credentials: 'github-token',
         branch     : 'master',
         scriptPath : 'Jenkinsfile'
     ]
